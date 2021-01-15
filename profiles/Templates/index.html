@@ -1,0 +1,56 @@
+{% load static %} {% load crispy_forms_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Register Staff</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static '/css/style.css' %}">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/index.js' %}">
+    </script>
+
+</head>
+
+<body>
+    {% block content %}
+    <div class="container ">
+        <form method="POST" autocomplete="off">
+            <div class="form-group">
+                {% csrf_token %} {{forms|crispy}}
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </div>
+        </form>
+        <button class="btn btn-info"> <a href="{% url 'staffs' %}"> Check status </a></button>
+    </div>
+    {% endblock %}
+</body>
+<style>
+    body {
+        background: black;
+        color: azure;
+    }
+    
+    .container {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+    
+    .btn>a {
+        text-decoration: none;
+        list-style-type: none;
+        color: beige;
+    }
+    
+    @media screen and (min-width: 700px) {
+        .container {
+            max-width: 50vw;
+        }
+    }
+</style>
+
+</html>
